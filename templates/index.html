@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block titulo %}Dashboard Geral{% endblock %}
+
+{% block conteudo %}
+
+<div class="titulo-linha">
+    <h1 class="titulo-pagina"><i class="fas fa-chart-pie"></i> Visão Geral da Frota</h1>
+    <p class="apoio">Resumo operacional e impacto das metas ESG aplicadas à logística.</p>
+</div>
+
+<!-- ===================== KPIs ===================== -->
+<div class="kpis kpis-dashboard">
+    <div class="kpi kpi-azul">
+        <span>Caminhões na Frota</span>
+        <strong><i class="fas fa-truck"></i> {{ totais.caminhoes }}</strong>
+    </div>
+
+    <div class="kpi kpi-verde">
+        <span>Viagens Realizadas</span>
+        <strong><i class="fas fa-map-marked-alt"></i> {{ totais.viagens }}</strong>
+    </div>
+
+    <div class="kpi kpi-laranja">
+        <span>Motoristas Ativos</span>
+        <strong><i class="fas fa-id-card"></i> {{ totais.motoristas }}</strong>
+    </div>
+
+    <div class="kpi kpi-vermelho">
+        <span>Custo de Preventivas</span>
+        <strong><i class="fas fa-wrench"></i> {{ totais.custo_manutencao|brl }}</strong>
+    </div>
+</div>
+
+<!-- ===================== ESG / ODS ===================== -->
+<h2 class="secao"><i class="fas fa-globe-americas"></i> Metas ESG e ODS Alcançadas</h2>
+
+<div class="esg-grid">
+
+    <article class="esg-card esg-card-verde">
+        <div class="esg-bolinha">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <h3>Sustentabilidade Ambiental</h3>
+        <p>
+            Viagens com rotas otimizadas e ocupação máxima de cubagem
+            para menor emissão de carbono por viagem.
+        </p>
+        <div class="esg-tags">
+            <span class="esg-tag tag-verde">ODS 3</span>
+            <span class="esg-tag tag-verde">ODS 13</span>
+        </div>
+    </article>
+
+    <article class="esg-card esg-card-azul">
+        <div class="esg-bolinha">
+            <i class="fas fa-industry"></i>
+        </div>
+        <h3>Gestão de Manutenção</h3>
+        <p>
+            Checklists preventivos rigorosos garantem a segurança viária
+            e o aumento da vida útil dos pneus e peças.
+        </p>
+        <div class="esg-tags">
+            <span class="esg-tag tag-azul">ODS 8</span>
+            <span class="esg-tag tag-azul">ODS 9</span>
+            <span class="esg-tag tag-azul">ODS 12</span>
+        </div>
+    </article>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='esg.js') }}"></script>
+{% endblock %}

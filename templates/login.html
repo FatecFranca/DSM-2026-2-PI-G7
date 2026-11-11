@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • Winxcar Logística</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-box">
+        <!-- LOGO NA TELA DE LOGIN -->
+        <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="logo Logística" class="logo-login">
+
+        <h1>Acesso Restrito</h1>
+        <p class="apoio">Sistema de Gestão de Frota • Winxcar Logística</p>
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+        {% if mensagens %}
+        <div class="mensagens-login">
+            {% for categoria, mensagem in mensagens %}
+            <div class="msg msg-{{ categoria }}">{{ mensagem }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <form method="post" action="{{ url_for('login') }}" class="form-login">
+            <label>Senha de Administrador
+                <input type="password" name="senha" required placeholder="Digite a senha..." autofocus>
+            </label>
+
+            <button class="btn btn-principal" type="submit">
+                <i class="fas fa-sign-in-alt"></i> Entrar no Sistema
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
